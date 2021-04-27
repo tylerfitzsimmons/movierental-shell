@@ -7,7 +7,7 @@ public class RentalShell {
 	public void RentalMenu() {
 		System.out.println("Welcome to a movie store rental test.");
 		System.out.println("Please select an option from the list");
-		System.out.println("1. Order a new rental.");
+		System.out.println("1. View movies available for rent.");
 		System.out.println("2. Return rental.");
 		System.out.println("3. Pay late fees.");
 		System.out.println("4. Subscribe to rewards program");
@@ -17,7 +17,8 @@ public class RentalShell {
 		
 		switch(menuSelection) {
 		case 1: 
-			System.out.println("it works!");
+			MovieInventory mi = new MovieInventory();
+			mi.Inventory();
 			break;
 		case 2: 
 			System.out.println("it works!");
@@ -32,9 +33,7 @@ public class RentalShell {
 			System.out.println("Thank you for your business!");
 			System.exit(0);
 			break;
-		}
-		
-		
+		}	
 	}
 
 }

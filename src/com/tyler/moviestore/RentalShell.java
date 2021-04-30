@@ -21,7 +21,7 @@ public class RentalShell {
 			mi.Inventory();
 			break;
 		case 2: 
-			System.out.println("it works!");
+			RentalReturn rr = new RentalReturn();
 			break;
 		case 3: 
 			System.out.println("it works!");

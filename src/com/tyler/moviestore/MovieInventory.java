@@ -4,16 +4,18 @@ import java.util.Scanner;
 
 public class MovieInventory {
 	Scanner movieSelect = new Scanner(System.in);
+	RentalReturn rr = new RentalReturn();
 	String movieTitle;
 	double moviePrice;
 	int movRentPeriod;
+	boolean rentalPossible = false;
 
-	
+
 	public void Inventory() {
 		String[] movieOptions = {"MovieOne", "MovieTwo", "MovieThree", "MovieFour", "MovieFive"};
 		System.out.println(Arrays.toString(movieOptions));
 		String selection = movieSelect.nextLine();
-		
+
 		if(selection.equalsIgnoreCase("MovieOne")) {
 			MovieOne();
 		}
@@ -33,7 +35,7 @@ public class MovieInventory {
 			System.out.println("Invalid option. Please input a movie title from the inventory list.");
 			Inventory();
 		}
-		
+
 	}
 
 	private void MovieOne() {
@@ -41,34 +43,45 @@ public class MovieInventory {
 		moviePrice = 3.99;
 		movRentPeriod = 7;
 		System.out.println("Title: " + movieTitle + " Price: " + moviePrice + " Rental Duration: " + movRentPeriod);
+		RentMovie();
 	}
-	
+
 	private void MovieTwo() {
 		movieTitle = "MovieTwo";
 		moviePrice = 5.00;
 		movRentPeriod = 7;
 		System.out.println("Title: " + movieTitle + " Price: " + moviePrice + " Rental Duration: " + movRentPeriod);
+		RentMovie();
 	}
-	
+
 	private void MovieThree() {
 		movieTitle = "MovieThree";
 		moviePrice = 9.00;
 		movRentPeriod = 7;
 		System.out.println("Title: " + movieTitle + " Price: " + moviePrice + " Rental Duration: " + movRentPeriod);
+		RentMovie();
 	}
-	
+
 	private void MovieFour() {
 		movieTitle = "MovieFour";
 		moviePrice = 7.00;
 		movRentPeriod = 7;
 		System.out.println("Title: " + movieTitle + " Price: " + moviePrice + " Rental Duration: " + movRentPeriod);
+		RentMovie();
 	}
-	
+
 	private void MovieFive() {
 		movieTitle = "MovieFive";
 		moviePrice = 2.50;
 		movRentPeriod = 7;
 		System.out.println("Title: " + movieTitle + " Price: " + moviePrice + " Rental Duration: " + movRentPeriod);
+		RentMovie();
+	}
+	
+	public void RentMovie() {
+		rentalPossible = true;
+		rr.setRentalTitled(movieTitle);
+		System.out.println(rr.getRentalTitled());
 	}
 
 }

@@ -22,6 +22,11 @@ public class RentalShell {
 			break;
 		case 2: 
 			RentalReturn rr = new RentalReturn();
+			rr.setAmountPaid(0);
+			rr.setAmountPaid(0.0);
+			rr.setRentalTitled("");
+			System.out.println("If you had an outstanding rental, it has been returned.");
+			RentalMenu();
 			break;
 		case 3: 
 			System.out.println("it works!");

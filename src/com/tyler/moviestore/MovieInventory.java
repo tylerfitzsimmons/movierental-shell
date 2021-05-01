@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class MovieInventory {
-	Scanner movieSelect = new Scanner(System.in);
+	Scanner scan = new Scanner(System.in);
 	RentalReturn rr = new RentalReturn();
 	String movieTitle;
 	double moviePrice;
@@ -12,9 +12,10 @@ public class MovieInventory {
 
 
 	public void Inventory() {
+		System.out.println("Please select a movie to view. You can decide whether to rent it or not later.");
 		String[] movieOptions = {"MovieOne", "MovieTwo", "MovieThree", "MovieFour", "MovieFive"};
 		System.out.println(Arrays.toString(movieOptions));
-		String selection = movieSelect.nextLine();
+		String selection = scan.nextLine();
 
 		if(selection.equalsIgnoreCase("MovieOne")) {
 			MovieOne();
@@ -43,7 +44,7 @@ public class MovieInventory {
 		moviePrice = 3.99;
 		movRentPeriod = 7;
 		System.out.println("Title: " + movieTitle + " Price: " + moviePrice + " Rental Duration: " + movRentPeriod);
-		RentMovie();
+		RentalQueue();
 	}
 
 	private void MovieTwo() {
@@ -51,7 +52,7 @@ public class MovieInventory {
 		moviePrice = 5.00;
 		movRentPeriod = 7;
 		System.out.println("Title: " + movieTitle + " Price: " + moviePrice + " Rental Duration: " + movRentPeriod);
-		RentMovie();
+		RentalQueue();
 	}
 
 	private void MovieThree() {
@@ -59,7 +60,7 @@ public class MovieInventory {
 		moviePrice = 9.00;
 		movRentPeriod = 7;
 		System.out.println("Title: " + movieTitle + " Price: " + moviePrice + " Rental Duration: " + movRentPeriod);
-		RentMovie();
+		RentalQueue();
 	}
 
 	private void MovieFour() {
@@ -67,7 +68,7 @@ public class MovieInventory {
 		moviePrice = 7.00;
 		movRentPeriod = 7;
 		System.out.println("Title: " + movieTitle + " Price: " + moviePrice + " Rental Duration: " + movRentPeriod);
-		RentMovie();
+		RentalQueue();
 	}
 
 	private void MovieFive() {
@@ -75,13 +76,28 @@ public class MovieInventory {
 		moviePrice = 2.50;
 		movRentPeriod = 7;
 		System.out.println("Title: " + movieTitle + " Price: " + moviePrice + " Rental Duration: " + movRentPeriod);
+		RentalQueue();
+	}
+	
+	public void RentalQueue() {
+		System.out.println("Do you want to rent this movie? y/n");
+		String selection = scan.nextLine();
+		if(selection.equalsIgnoreCase("y")) {
 		RentMovie();
+		} 
+		else {
+			System.out.println("Returning to movie selection");
+			Inventory();
+		}
+		
 	}
 	
 	public void RentMovie() {
 		rentalPossible = true;
 		rr.setRentalTitled(movieTitle);
-		System.out.println(rr.getRentalTitled());
+		rr.setRentalDuration(movRentPeriod);
+		rr.setAmountPaid(moviePrice);
+		rr.viewRentals();
 	}
 
 }
